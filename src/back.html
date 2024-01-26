@@ -1,0 +1,69 @@
+<!-- See ginger51011/prty-shortcut-cards for full source -->
+
+<div class="note">
+    <div class="title-container">
+        <span class="title-text">
+            {{Software}}
+            {{^Software}}
+                Unspecified Software
+            {{/Software}}
+        </span>
+    </div>
+    <div class="front-container">
+        {{Action}}
+    </div>
+    <!-- Front of card ends -->
+
+    <hr class="card-divider"/>
+    
+    <!-- Back of card begins -->
+    <span id="shortcut-combo-1" hidden>{{Key Combination}}</span>
+    <span id="shortcut-combo-2" hidden>{{Extra Key Combination}}</span>
+    <!-- Is unhidden when element is ready -->
+    <div id="formatted-shortcut" class="shortcut-container" hidden>
+        {{^Key Combination}}
+            <i>Fill field shortcut in form `Ctrl Shift P` to format!</i>
+        {{/Key Combination}}
+    </div>
+
+    <script>
+        // Block so const will go out of scope when appropriate
+        {
+            const shortcutText = document.getElementById('shortcut-combo-1').innerText;
+            const extracomboText = document.getElementById('shortcut-combo-2').innerText;
+
+            const shortcutContainer = document.getElementById('formatted-shortcut');
+            
+            const shortcutArray = shortcutText.split(' ');
+            appendKbd(shortcutArray, shortcutContainer);
+            
+            if (extracomboText && extracomboText.length !== 0) {
+                // Add space before next combination
+                shortcutContainer.append(' ');
+
+                const extraArray = extracomboText.split(' ');
+                appendKbd(extraArray, shortcutContainer);
+            }
+            
+            // Was hidden until now, so building of element cannot be seen
+            shortcutContainer.removeAttribute('hidden');
+
+            /**
+             * Appends a combo of keys, properly formatted as `<kbd>` elements
+             */
+            function appendKbd(comboArray, container) {
+                comboArray.forEach((key, index) => {
+                    if (index !== 0) {
+                        // Prepend a plus, this is not the first in a combo. Add
+                        // word boundaries to allow for wrapping
+                        container.append(document.createElement('wbr'), '+', document.createElement('wbr'));
+                    }
+
+                    const newElement = document.createElement('kbd');
+                    newElement.innerText = key;
+                    container.append(newElement);
+                });
+            }
+        }
+    </script>
+</div>

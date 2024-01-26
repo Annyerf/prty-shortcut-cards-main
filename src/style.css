@@ -1,0 +1,159 @@
+/* See ginger51011/prty-shortcut-cards for full source */
+
+/* Colors based on Nord theme */
+
+.card {
+    /* DISGUSTING light mode, ugh */
+    --color: rgb(46, 52, 64);
+    --text-shadow: var(--outer-border-color);
+
+    --outer-border-color: rgb(216, 222, 233);
+    --note-background: rgb(229, 233, 240);
+    --divider-color: var(--outer-border-color);
+
+    --title-background-color: rgb(235, 203, 139);
+
+    --kbd-color: rgb(163, 190, 140);
+    --kbd-background-color: rgb(59, 66, 82);
+    --kbd-shadow: var(--outer-border-color);
+
+    --code-color: rgb(135, 191, 207);
+    --code-background-color: rgb(60, 67, 83);
+}
+
+.card.nightMode {
+    /* Night mode represent */
+    --color: rgb(236, 239, 244);
+    --text-shadow: var(--outer-border-color);
+
+    --outer-border-color: rgb(76, 86, 106);
+    --note-background: rgb(46, 52, 64);
+    --divider-color: var(--outer-border-color);
+
+    --title-background-color: rgb(208, 135, 112);
+
+    --kbd-color: rgb(163, 190, 140);
+    --kbd-background-color: rgb(59, 66, 82);
+    --kbd-shadow: var(--outer-border-color);
+
+    --code-color: rgb(135, 191, 207);
+    --code-background-color: rgb(60, 67, 83);
+}
+
+.note {
+    /* Distances */
+    --top-margin: 1.2em;
+    --content-text-padding: 0.3em;
+
+    /* Borders */
+    --outer-border: 0.05em solid var(--outer-border-color);
+
+    /* Sizes */
+    --note-max-width: 40em;
+    --line-height: 1.6;
+
+    /* Fonts */
+    --font-family: "Roboto", "Inter", "Rubik", "Avenir", "system-ui";
+    --mono-font-family: "Roboto Mono", "Source Code Pro", "Ubuntu Mono", monospace;
+
+    /* Text */
+    color: var(--color);
+    font-family: var(--font-family);
+    font-size: 20px;
+    text-align: center;
+
+    border: var(--outer-border);
+    border-radius: 4px;
+
+    background-color: var(--note-background);
+
+    line-height: var(--line-height);
+
+    /* Margins and padding */
+    padding: 0.4em;
+    margin: 0 auto;
+    margin-top: var(--top-margin) !important;
+    max-width: var(--note-max-width);
+
+    /* Flexbox */
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+code {
+    padding: 2px 4px;
+    color: var(--code-color);
+    background-color: var(--code-background-color);
+    border-radius: 3px;
+    font-family: var(--mono-font-family);
+}
+
+/* #### FRONT #### */
+.title-container {
+    margin-top: calc(-1 * var(--top-margin));
+}
+
+.title-text {
+    /* Text */
+    font-weight: bolder;
+    font-family: var(--mono-font-family);
+    text-align: center;
+    font-size: 20px;
+    text-shadow: 0.05em 0 var(--text-shadow);
+    color: var(--color);
+
+    /* Box */
+    padding: .1em .7em;
+    border: var(--outer-border);
+    border-radius: 20px;
+    background-color: var(--title-background-color);
+
+    /* Placement */
+    margin: 0 auto;
+}
+
+div.front-container {
+    padding: var(--content-text-padding);
+    margin: auto;
+}
+
+/* #### BACK #### */
+hr.card-divider {
+    border: none;
+    border-top: 2px dotted var(--divider-color);
+    background-color: transparent;
+    margin: 0.4em 0;
+}
+
+/* Container for shortcuts */
+.shortcut-container {
+    /* Text */
+    color: var(--kbd-color);
+    font-size: 125%;
+    text-align: center !important;
+    text-shadow: var(--kbd-shadow);
+    line-height: 2em;
+
+    /* Placement */
+    margin: auto;
+    padding: var(--content-text-padding);
+}
+
+/* Keyboard keys */
+kbd {
+    /* Text */
+    font-family: var(--mono-font-family);
+    text-shadow: none !important;
+
+    /* Box */
+    border: 1px solid var(--kbd-color);
+    border-radius: 3pt;
+    background-color: var(--kbd-background-color);
+    box-shadow: 0 2px 3px var(--kbd-shadow);
+
+    /* Placement */
+    margin: .2em;
+    padding: .1em .6em;
+}
